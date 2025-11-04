@@ -14,13 +14,9 @@
   </form>
 
   <script>
-    // Esperar a que el DOM esté listo y luego auto-submit.
-    // Esto reduce condiciones de carrera y asegura que la cookie de sesión
-    // ya esté disponible en el navegador.
     document.addEventListener('DOMContentLoaded', function() {
       var form = document.getElementById('f');
       if (form) {
-        // pequeño retraso adicional para asegurar inclusión de cookies en casos raros
         setTimeout(function(){ form.submit(); }, 200);
       }
     });
