@@ -1,7 +1,11 @@
 # Laboratorio CSRF — Vulnerable vs Parcheado
 
-### Activar virtualenv (Windows PowerShell): .\venv\Scripts\Activate.ps1
-### Instalar Flask: pip install flask
+### Activar virtualenv (Windows PowerShell)
+python -m venv venv
+.\venv\Scripts\Activate.ps1
+
+### Instalar todas las dependencias del proyecto
+pip install -r requirements.txt
 
 
 Pasos para demostrar vulnerabilidad:
