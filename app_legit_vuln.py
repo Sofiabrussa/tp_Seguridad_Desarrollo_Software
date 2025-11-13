@@ -1,5 +1,5 @@
 # app_legit_vuln.py
-from flask import Flask, request, session, redirect, render_template_string, g
+from flask import Flask, request, session, redirect, render_template_string, g, send_from_directory
 import sqlite3
 import os
 
@@ -41,7 +41,7 @@ def close_db(exc):
 @app.route("/")
 def index():
     if "user_id" in session:
-        return redirect("/profile")
+        return redirect("/inicio")
     return redirect("/login")
 
 @app.route("/login", methods=["GET","POST"])
@@ -53,33 +53,18 @@ def login():
         r = db.execute("SELECT * FROM users WHERE username=? AND password=?", (user,pw)).fetchone()
         if r:
             session["user_id"] = r["id"]
-            return redirect("/profile")
-        return "Credenciales inválidas", 401
-    return render_template_string("""
-      <h2>Login (vulnerable)</h2>
-      <form method="POST">
-        <label>Usuario: <input name="username" value="alice"></label><br>
-        <label>Password: <input name="password" type="password" value="password"></label><br>
-        <button>Login</button>
-      </form>
-    """)
+            return redirect("/")
+        return send_from_directory('static/vulnerable','error.html')
+    return send_from_directory('static/vulnerable','login.html')
 
-@app.route("/profile", methods=["GET"])
+
+@app.route("/inicio", methods=["GET"])
 def profile():
     if "user_id" not in session:
         return redirect("/login")
     db = get_db()
     r = db.execute("SELECT * FROM users WHERE id=?", (session["user_id"],)).fetchone()
-    return render_template_string("""
-      <h2>Perfil (vulnerable)</h2>
-      <p>Usuario: {{u}}</p>
-      <p>Email actual: {{e}}</p>
-      <form action="/change-email" method="POST">
-        <input name="new_email" value="{{e}}">
-        <button>Cambiar Email</button>
-      </form>
-      <p><a href="/logout">Logout</a></p>
-    """, u=r["username"], e=r["email"])
+    return send_from_directory('static/vulnerable','inicio.html')
 
 @app.route("/change-email", methods=["POST"])
 def change_email():

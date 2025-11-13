@@ -1,0 +1,118 @@
+body{
+  background-image: url("/static/resources/images/fondo.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  backdrop-filter: blur(3px);
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+
+}
+header{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 10vh;
+    position: top;
+    display: flex;
+    background-color: #045D39;
+    justify-content: space-between;
+    box-shadow: 12px 12px 20px rgba(0, 0, 0, 0.8);
+}
+
+.saldo-span{
+    display: flex;
+    align-items: center;
+}
+
+.saldo{
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.5em;
+    color: white;
+    margin-left: 2vw;
+}
+
+.logo{
+    width: 10vh;
+    height: 10vh;
+}
+
+.menu{
+    display: flex;
+    justify-content: end;
+}
+
+.button-header{
+    font-family: 'Roboto', sans-serif;
+    color: white;
+    border:none;
+    background-color: #045D39;
+    width: 6vw;
+    height: 10vh;
+    margin:0;
+    cursor: pointer;
+}
+
+.button-header:active{
+    background-color: #034d2f;
+}
+
+.title-container{
+    margin-top: 10vh;
+    color: white;
+    justify-items: center;   
+}
+
+.title{
+    font-family: 'Roboto', sans-serif;
+    font-size: 3em;
+    font-weight: 800;
+}
+
+.game-container{
+    width: 100%;
+
+}
+
+.game-span{
+    display: flex;
+    margin-top: 10vh;
+    width: 100%;
+    justify-content: center;
+}
+
+.logos {
+  background-image: url("/static/resources/images/logos.png");
+  background-size: 300%; /* 3 columnas x 3 filas */
+  width: 128px;  /* tamaño de un logo */
+  height: 128px;
+  display: inline-block;
+  background-repeat: no-repeat;
+  margin-left: 4vw;
+  margin-right: 4vw;
+  background-color: rgba(0,0,0,0.75);
+  box-shadow: 4px 4px 4px rgba(0,0,0,0.75);
+  transition: ease 0.05s;
+}
+
+.logos:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+.logos:active{
+    outline: auto;
+}
+
+/* Fila 1 */
+.logo-1 { background-position:   5%   15%; }  
+.logo-2 { background-position: 52%   15%; }  
+.logo-3 { background-position: 96%  77%; }   
+.logo-4 { background-position:   5%  47%; }  
+/*Fila 2*/
+.logo-5 { background-position: 52%  47%; } 
+.logo-6 { background-position: 96% 47%; } 
+.logo-7 { background-position:   5%  77%; } 
+.logo-8 { background-position: 52%  77%; } 
+

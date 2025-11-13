@@ -1,5 +1,5 @@
 # app_legit_csrf.py
-from flask import Flask, request, session, redirect, render_template_string, g
+from flask import Flask, request, session, redirect, render_template_string, g,  send_from_directory, render_template
 import sqlite3, os, secrets
 
 DB = "users.db"
@@ -66,14 +66,7 @@ def login():
             get_csrf_token()
             return redirect("/profile")
         return "Credenciales inválidas", 401
-    return render_template_string("""
-      <h2>Login (parcheado)</h2>
-      <form method="POST">
-        <label>Usuario: <input name="username" value="alice"></label><br>
-        <label>Password: <input name="password" type="password" value="password"></label><br>
-        <button>Login</button>
-      </form>
-    """)
+    return send_from_directory('static/vulnerable', 'login.html')
 
 @app.route("/profile", methods=["GET"])
 def profile():

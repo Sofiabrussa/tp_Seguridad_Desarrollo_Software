@@ -1,0 +1,29 @@
+body{
+  background-image: url("/static/resources/images/fondo.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  backdrop-filter: blur(3px);
+  height: 100vh;
+
+}
+
+.logo{
+    display: flex;
+    width: 350px;
+    height: 350px;
+    margin: auto;
+}
+
+.container{
+    font-family: 'Roboto', sans-serif;
+    display: flexbox;
+    width: 35%;
+    background-color: rgba(0,0,0,0.7);
+    justify-items: center;
+    color:white;
+    margin: auto;
+    padding: 1vw 1vh;
+
+
+}
