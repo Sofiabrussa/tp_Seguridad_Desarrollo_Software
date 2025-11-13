@@ -13,7 +13,7 @@ Pasos para demostrar vulnerabilidad:
 - Levantar la versión vulnerable: python app_legit_vuln.py
 - Abrir http://localhost:5000/login, Loguear con alice / password
 - Ir a http://localhost:5000/profile y confirmar el email actual
-- Abrir en otra pestaña (mismo navegador): http://localhost:5000/change-email → se enviará automáticamente el hack para cambiar el email e informará Email cambiado.
+- Abrir en otra pestaña (mismo navegador): http://localhost:5000/evil → se enviará automáticamente el hack para cambiar el email e informará Email cambiado.
 - Volver a http://localhost:5000/profile y recargar la página — se verá que el email se cambió por evil@attacker.com.
 
 

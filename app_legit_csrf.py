@@ -4,9 +4,9 @@ import sqlite3, os, secrets
 
 DB = "users.db"
 app = Flask(__name__)
-app.secret_key = "dev-secret-key"  # SOLO para pruebas locales; en prod usar secreto seguro
+app.secret_key = "dev-secret-key"  
 
-# --- DB helpers (reuse same DB) ---
+# --- DB  ---
 def get_db():
     db = getattr(g, "_db", None)
     if db is None:
@@ -105,12 +105,15 @@ def change_email():
     rotate_csrf_token()
     return f"Email cambiado a {new}"
 
+#Cerrar sesion y borrar cookies
 @app.route("/logout")
 def logout():
     session.clear()
-    return redirect("/login")
+    resp = redirect("/login")
+    resp.set_cookie("session", "", expires=0)
+    return resp
 
-# ---- same-origin "evil" route for demo (will be blocked by CSRF patch) ----
+# Route evil
 @app.route("/evil", methods=["GET"])
 def evil_page():
     return '''
