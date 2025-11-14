@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,10 +15,24 @@
             <img src="/static/resources/images/logo.png" alt="BitStake" class="logo">
             <p class="saldo">Saldo: $123</p>
         </span>
-        <nav id="menu" class="menu">
-            <button id="perfil" class="button-header">Perfil</button>
+        <nav>
+            <ul>
+                <li >
+                    <a id="perfil" href="#">Perfil</a>
+                </li>
+                <div class="menu oculto"> 
+                    <li>
+                        <a href="/cuenta">Cuenta</a>
+                    </li>
+                    <li>
+                        <a href="#">Cargar saldo</a>
+                    </li>
+                    <li>
+                        <a href="#">Soporte</a>
+                    </li>
+                </div>
+            </ul>
         </nav>
-        </div>
     </header>
     <div class="title-container">
         <h1 class="title" >JUEGOS</h1>
@@ -40,7 +54,28 @@
 
     </div>
     <script>
+        document.addEventListener("DOMContentLoaded", (e)=>{
+            let perfil = document.getElementById("perfil")
+            let menu = document.getElementsByClassName("menu")[0]
 
+            perfil.addEventListener("mouseenter", (e) => {
+                menu.classList.remove("oculto");
+            });
+
+            menu.addEventListener("mouseenter", (e) =>{
+                menu.classList.remove("oculto")
+            })
+
+            perfil.addEventListener("mouseleave", (e) => {
+                menu.classList.add("oculto");
+            });
+
+            menu.addEventListener("mouseleave", (e) =>{
+                menu.classList.add("oculto")
+            })
+
+       
+        });
     </script>    
 </body>
 </html>

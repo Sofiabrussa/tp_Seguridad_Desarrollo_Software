@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/cuenta.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Trocchi&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <img src="/static/resources/images/logopng.png" alt="BitStake" class="logo">
+        <h1 class="title-header">Cuenta</h1>
+    </header>
+    <span>
+        <sidebar class="container">
+            <ul>
+                <li>
+                    <button class="button button-inicio active">Inicio</button>
+                </li>
+                <li>
+                    <button class="button button-mail">confirmar mail</button>
+                </li>
+                <li>
+                    <button class="button button-contraseña">cambiar contraseña</button>
+                </li>
+                <li>
+                    <button class="button">cargar dinero</button>
+                </li>
+                <li>
+                    <button class="button" >retirar dinero</button>
+                </li>
+                <li>
+                    <button class="button">soporte tecnico</button>
+                </li>
+            </ul>
+    
+            <button class="button">cerrar sesion</button>
+        </sidebar>
+        <div class="screen"></div>
+
+    </span>
+
+</body>
+<script>
+    
+    document.addEventListener("DOMContentLoaded", ()=>{
+
+        //pantallas
+        const screen = document.querySelector(".screen")
+        console.log(screen)
+        //pantalla inicio (se carga por defecto)
+        const div = document.createElement("div")
+        div.classList.add("inicio-screen")
+        div.innerHTML=`
+            <h1>Nombre</h1>
+            <h2>Saldo</h2>
+        `
+        screen.appendChild(div)
+        //pantalla confirmar mail
+        const divMail = document.createElement("div")
+        divMail.classList.add("mail-screen")
+        divMail.innerHTML =`
+            <h3>Ingrese el mail para confirmar</h3>
+            <form action="">
+                <label for="mail">Mail</label>
+                <input name="mail" type="mail">
+                <button type="submit">Confirmar</button>
+            </form>
+        `
+        //pantalla contraseña
+        const divContra = document.createElement("div")
+        divContra.classList.add("constraseña-screen")
+        divContra.innerHTML =`
+            <p id="texto-contraseña">Se enviara un link a su correo para realizar el cambio de contraseña</p>
+            <button id="button-contraseña" class="button-cambiar">Cambiar contraseña</button>
+        `
+    
+        //marcar boton activo
+        let buttons = document.querySelectorAll(".button");
+        buttons.forEach(b=>{
+            b.addEventListener('click', (e)=>{
+                buttons.forEach(b => b.classList.remove("active"));
+                b.classList.add("active");
+
+                //agregamos pantalla
+                screen.innerHTML = "";
+                if (b.classList.contains("button-inicio")) {
+                    screen.appendChild(div);
+                    } else if (b.classList.contains("button-mail")) {
+                    screen.appendChild(divMail);
+                    } else if (b.classList.contains("button-contraseña")) {
+                    screen.appendChild(divContra);
+                    //actualizar el texto de contraseña
+                    const btn = document.getElementById("button-contraseña")
+                    const p = document.getElementById("texto-contraseña")
+                    btn.addEventListener('click', ()=>{
+                        p.textContent = "Correo enviado"
+                    })
+                    }
+            })
+        })
+        
+    })
+
+</script>
+</html>

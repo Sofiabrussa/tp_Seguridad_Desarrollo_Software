@@ -59,12 +59,20 @@ def login():
 
 
 @app.route("/inicio", methods=["GET"])
-def profile():
+def inicio():
     if "user_id" not in session:
         return redirect("/login")
     db = get_db()
     r = db.execute("SELECT * FROM users WHERE id=?", (session["user_id"],)).fetchone()
     return send_from_directory('static/vulnerable','inicio.html')
+
+@app.route("/cuenta", methods=["GET"])
+def cuenta():
+    if "user_id" not in session:
+        return redirect("/login")
+    db = get_db()
+    r = db.execute("SELECT * FROM users WHERE id=?", (session["user_id"],)).fetchone()
+    return send_from_directory('static/vulnerable','cuenta.html')
 
 @app.route("/change-email", methods=["POST"])
 def change_email():
