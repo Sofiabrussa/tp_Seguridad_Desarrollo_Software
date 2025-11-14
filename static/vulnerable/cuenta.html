@@ -12,30 +12,20 @@
 <body>
     <header>
         <img src="/static/resources/images/logopng.png" alt="BitStake" class="logo">
-        <h1 class="title-header">Cuenta</h1>
+        <h1 class="title-header">  MI CUENTA </h1>
     </header>
     <span>
         <sidebar class="container">
-            <ul>
-                <li>
-                    <button class="button button-inicio active">Inicio</button>
-                </li>
-                <li>
-                    <button class="button button-mail">confirmar mail</button>
-                </li>
-                <li>
-                    <button class="button button-contraseña">cambiar contraseña</button>
-                </li>
-                <li>
-                    <button class="button">cargar dinero</button>
-                </li>
-                <li>
-                    <button class="button" >retirar dinero</button>
-                </li>
-                <li>
-                    <button class="button">soporte tecnico</button>
-                </li>
-            </ul>
+            <p>MIS CARTERAS Y MIS APUESTAS</p>
+            <button class="button button-deposito active">Hacer un deposito</button>
+            <button class="button button-mail">Retirada de fondos</button>
+            <button class="button button-contraseña">Transacciones</button>
+            <p>PERFIL</p>
+            <button class="button">Datos personales</button>
+            <button class="button" >Seguridad</button>
+            <p>ADICIONAL</p>
+            <button class="button">Invite a sus amigos</button>
+            <button class="button">Atencion al cliente</button>
     
             <button class="button">cerrar sesion</button>
         </sidebar>
@@ -50,14 +40,45 @@
 
         //pantallas
         const screen = document.querySelector(".screen")
-        console.log(screen)
-        //pantalla inicio (se carga por defecto)
-        const div = document.createElement("div")
-        div.classList.add("inicio-screen")
-        div.innerHTML=`
-            <h1>Nombre</h1>
-            <h2>Saldo</h2>
+
+        //pantalla hacer deposito (por defecto)
+        const divDeposito = document.createElement("div")
+        divDeposito.classList.add("deposito-screen")
+        divDeposito.innerHTML = `
+            <div class="container-deposito">
+                <p>Seleccione el metodo de pago para recargar su cuenta:</p>
+                <p>METODOS</p>    
+                <div class="container-metodos">
+                    <div class="metodo">
+                        <img src="/static/resources/images/mercadoPago.jpg"/>    
+                        <p class="footer">Mercado Pago</p>
+                    </div>
+                    <div class="metodo">
+                        <img src="/static/resources/images/transferenciaBancaria.jpg"/>    
+                        <p class="footer">Transferencia Bancaria</p>
+                    </div>
+                    <div class="metodo">
+                        <img src="/static/resources/images/astroPay.jpg"/>    
+                        <p class="footer">Astro Pay</p>
+                    </div>
+                    <div class="metodo">
+                        <img src="/static/resources/images/bitcoin.jpg"/>    
+                        <p class="footer">Bitcoin</p>
+                    </div>
+                    <div class="metodo">
+                        <img src="/static/resources/images/monero.png"/>    
+                        <p class="footer">Monero</p>
+                    </div>
+                    <div class="metodo">
+                        <img src="/static/resources/images/ethereum.jpg"/>    
+                        <p class="footer">Ethereum</p>
+                    </div>
+                    
+                </div>    
+            </div>
         `
+        screen.appendChild(divDeposito)
+    
         screen.appendChild(div)
         //pantalla confirmar mail
         const divMail = document.createElement("div")
@@ -77,6 +98,9 @@
             <p id="texto-contraseña">Se enviara un link a su correo para realizar el cambio de contraseña</p>
             <button id="button-contraseña" class="button-cambiar">Cambiar contraseña</button>
         `
+
+        
+
     
         //marcar boton activo
         let buttons = document.querySelectorAll(".button");
