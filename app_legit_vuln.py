@@ -86,6 +86,32 @@ def change_email():
     app.logger.info(f"[VULN] change-email called for user {session['user_id']} -> {new}")
     return f"Email cambiado a {new}"
 
+@app.route("/profile", methods=["GET"])
+def user_profile():
+    if "user_id" not in session:
+        return redirect("/login")
+
+    db = get_db()
+    r = db.execute("SELECT * FROM users WHERE id=?", (session["user_id"],)).fetchone()
+
+    return render_template_string("""
+        <!DOCTYPE html>
+        <html lang="es">
+        <head>
+            <meta charset="UTF-8">
+            <title>Perfil</title>
+        </head>
+        <body>
+            <h1>Perfil del usuario</h1>
+            <p><strong>Usuario:</strong> {{ username }}</p>
+            <p><strong>Email actual:</strong> {{ email }}</p>
+
+            <a href="/inicio">Volver al inicio</a> |
+            <a href="/logout">Cerrar sesión</a>
+        </body>
+        </html>
+    """, username=r["username"], email=r["email"])
+
 @app.route("/logout")
 def logout():
     session.clear()

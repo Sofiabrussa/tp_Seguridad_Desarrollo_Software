@@ -1,81 +1,84 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/static/css/inicio.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Trocchi&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/css/inicio.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Trocchi&display=swap"
+      rel="stylesheet"
+    />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <span class="saldo-span">
-            <img src="/static/resources/images/logo.png" alt="BitStake" class="logo">
-            <p class="saldo">Saldo: $123</p>
-        </span>
-        <nav>
-            <ul>
-                <li >
-                    <a id="perfil" href="#">Perfil</a>
-                </li>
-                <div class="menu oculto"> 
-                    <li>
-                        <a href="/cuenta">Cuenta</a>
-                    </li>
-                    <li>
-                        <a href="#">Cargar saldo</a>
-                    </li>
-                    <li>
-                        <a href="#">Soporte</a>
-                    </li>
-                </div>
-            </ul>
-        </nav>
+      <span class="saldo-span">
+        <img
+          src="/static/resources/images/logo.png"
+          alt="BitStake"
+          class="logo"
+        />
+        <p class="saldo">Saldo: $123</p>
+      </span>
+      <nav>
+        <ul>
+          <li>
+            <a id="perfil" href="#">Perfil</a>
+          </li>
+          <div class="menu oculto">
+            <li>
+              <a href="/cuenta">Cuenta</a>
+            </li>
+            <li>
+              <a href="#">Cargar saldo</a>
+            </li>
+            <li>
+              <a href="#">Soporte</a>
+            </li>
+          </div>
+        </ul>
+      </nav>
     </header>
     <div class="title-container">
-        <h1 class="title" >JUEGOS</h1>
+      <h1 class="title">JUEGOS</h1>
     </div>
     <div class="game-container">
-        <span class="game-span">
-            <div class="logos logo-1"></div>   
-            <div class="logos logo-2"></div>  
-            <div class="logos logo-3"></div>  
-            <div class="logos logo-4"></div>  
-        </span>
-        <span class="game-span">
-            <div class="logos logo-5"></div>   
-            <div class="logos logo-6"></div>  
-            <div class="logos logo-7"></div>  
-            <div class="logos logo-8"></div>  
-        </span>
-
-
+      <span class="game-span">
+        <div class="logos logo-1"></div>
+        <div class="logos logo-2"></div>
+        <div class="logos logo-3"></div>
+        <div class="logos logo-4"></div>
+      </span>
+      <span class="game-span">
+        <div class="logos logo-5"></div>
+        <div class="logos logo-6"></div>
+        <div class="logos logo-7"></div>
+        <div class="logos logo-8"></div>
+      </span>
     </div>
     <script>
-        document.addEventListener("DOMContentLoaded", (e)=>{
-            let perfil = document.getElementById("perfil")
-            let menu = document.getElementsByClassName("menu")[0]
+      document.addEventListener("DOMContentLoaded", (e) => {
+        let perfil = document.getElementById("perfil");
+        let menu = document.getElementsByClassName("menu")[0];
 
-            perfil.addEventListener("mouseenter", (e) => {
-                menu.classList.remove("oculto");
-            });
-
-            menu.addEventListener("mouseenter", (e) =>{
-                menu.classList.remove("oculto")
-            })
-
-            perfil.addEventListener("mouseleave", (e) => {
-                menu.classList.add("oculto");
-            });
-
-            menu.addEventListener("mouseleave", (e) =>{
-                menu.classList.add("oculto")
-            })
-
-       
+        perfil.addEventListener("mouseenter", (e) => {
+          menu.classList.remove("oculto");
         });
-    </script>    
-</body>
+
+        menu.addEventListener("mouseenter", (e) => {
+          menu.classList.remove("oculto");
+        });
+
+        perfil.addEventListener("mouseleave", (e) => {
+          menu.classList.add("oculto");
+        });
+
+        menu.addEventListener("mouseleave", (e) => {
+          menu.classList.add("oculto");
+        });
+      });
+    </script>
+  </body>
 </html>
