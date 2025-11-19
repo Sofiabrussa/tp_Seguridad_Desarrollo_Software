@@ -63,7 +63,6 @@ def inicio():
     if "user_id" not in session:
         return redirect("/login")
     db = get_db()
-    r = db.execute("SELECT * FROM users WHERE id=?", (session["user_id"],)).fetchone()
     return send_from_directory('static/vulnerable','inicio.html')
 
 
@@ -121,7 +120,7 @@ def logout():
     session.clear()
     return redirect("/login")
 
-# ---- Demo same-origin "maliciosa" (solo para laboratorio local) ----
+# ---- maliciosa----
 @app.route("/evil", methods=["GET"])
 def evil_page():
     return send_from_directory('static','evil.html')
