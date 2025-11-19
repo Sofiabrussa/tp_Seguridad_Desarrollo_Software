@@ -34,6 +34,8 @@
 
 </body>
 <script>
+    var emailUsuario = "{{ email }}";
+    var usuarioNombre = "{{ username }}";
     
     document.addEventListener("DOMContentLoaded", ()=>{
 
@@ -146,10 +148,7 @@
             </div>
         `
         
-        //pantalla datos personales
-        let emailUsuario = "{{ email }}";
-        let usuarioNombre = "{{ username }}";
-
+        //datos personales
         let divPersonales = document.createElement("div");
         divPersonales.classList.add("personales-screen");
         divPersonales.innerHTML = `
@@ -172,7 +171,6 @@
                 <button class="button">Guardar</button>
             </form>
         `;
-
 
         //pantalla invitacion
         const divinvitacion = document.createElement("div")
@@ -213,11 +211,6 @@
             </div>
 
         `
-
-    
-
-        
-
     
         //marcar boton activo
         let buttons = document.querySelectorAll(".button");

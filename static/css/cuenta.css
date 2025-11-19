@@ -203,62 +203,6 @@ html, body{
     width: 20%;
 }
 
-
-/*pantalla seguridad*/
-.seguridad-screen{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.seguridad-screen form{
-    width:60%;
-    margin:2%;
-    display: flex;
-    flex-direction: column;
-    background-color: #343434;
-    padding: 5%;
-    border-radius: 8px;
-}
-
-.seguridad-screen h2{
-    margin: auto;
-}
-
-.seguridad-screen label{
-    margin-bottom: 5px;
-}
-
-.seguridad-screen input{
-    font-family: 'Roboto', sans-serif;
-    font-size: 0.9em;
-    width: 100%;
-    height: 3vh;
-    margin-bottom: 2vh;
-    border: none;
-    border-radius: 8px;
-}
-
-
-.seguridad-screen input:focus{
-    outline: none;
-}
-
-.seguridad-screen input:disabled{
-    color: rgba(255, 255, 255, 0.734);
-}
-
-
-.seguridad-screen button{
-    margin-left:80%;
-    background-color: #212121;
-    margin-top: 5%;
-    border-radius: 8px;
-    width: 25%;
-}
-
 /*pantalla invitacion*/
 .invitacion-screen{
     font-size: 1em;

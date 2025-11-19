@@ -1,5 +1,5 @@
 # app_legit_vuln.py
-from flask import Flask, request, session, redirect, render_template_string, g, send_from_directory
+from flask import Flask, request, session, redirect, render_template_string, g, send_from_directory, render_template
 import sqlite3
 import os
 
@@ -66,13 +66,17 @@ def inicio():
     r = db.execute("SELECT * FROM users WHERE id=?", (session["user_id"],)).fetchone()
     return send_from_directory('static/vulnerable','inicio.html')
 
+
 @app.route("/cuenta", methods=["GET"])
 def cuenta():
     if "user_id" not in session:
         return redirect("/login")
+
     db = get_db()
     r = db.execute("SELECT * FROM users WHERE id=?", (session["user_id"],)).fetchone()
-    return send_from_directory('static/vulnerable','cuenta.html')
+
+    return render_template("cuenta.html", email=r["email"], username=r["username"])
+
 
 @app.route("/change-email", methods=["POST"])
 def change_email():
