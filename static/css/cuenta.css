@@ -2,86 +2,60 @@
   box-sizing: border-box;
 }
 
-body{
+html, body{
     font-family: 'Roboto', sans-serif;
     color: white;
-  /*   background-image: url("/static/resources/images/fondo.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    backdrop-filter: blur(3px); */
     background-color: #212121;
-    height: 100vh;
+    height: 100%;
     margin: 0;
     padding: 0;
-
 }
 
-header{
+.header-container{
+    display: flex;
+    width: 100%;
+    height: 15vh;
+    min-height: 15vh;
     margin: 0;
     padding: 0;
-    width: 25%;
-    height: 15vh;
-    display: flex;
-
     justify-content:flex-start;
     /* box-shadow: 12px 12px 20px rgba(0, 0, 0, 0.8); */
 }
 
-div{
-    display: flex;
-    flex-direction: column;
-    margin: 0;
-}
-
-.title-header{
+.header-title{
     margin-left: 1vw;
 }
 
-.title{
-    text-align: center;
-
-
-}
-.saldo{
-    text-align: center;
+.container-principal{
+    display: flex;
+    min-width: 100vw;
+    min-height: 100vh;
 }
 
-.container{
-    position: relative;
-    display: block;
-    height: 90vh;
+.container-sidebar{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;  
+    width: 25%;
     background-color: #343434;
 
-    width: 20%;
-    padding-top: 20px;
 }
 
-ul{
-    margin: 0;
-    padding: 0;
-}
-
-li{
-    list-style-type: none;
-    display: flex;
+.container-sidebar p{
+    color: gray;
+    margin-left: 1vw;
+    margin-right: 1vw;
 }
 
 .button{
     font-family: 'Roboto', sans-serif;
-    font-size: 1.5em;
     color: white;
+    font-size: 1.3em;
     background-color: #343434;
     border:none;
     width: 100%;
     height: 5vh;
     border-radius: 0px 20px 20px 0px;
-
-}
-
-p{
-    color: gray;
-    margin-left: 1vw;
 }
 
 .button:hover{
@@ -89,56 +63,249 @@ p{
    background-color: #067247;
 }
 
+.active{
+    background-color: #034d2f;
+}
+
 .button:active{
     background-color: #034d2f;
 }
 
-.button.active{
-    background-color: #045D39;
-}
-
-span{
-    display: flex;
-}
-
-.screen{
-    height: 85vh;
-    width: 80vw;
-    align-items: center;
-    
+.container-screen{
+    min-height: 85%;
+    flex: 1;
 }
 
 /*pantalla deposito*/
-.container-deposito{
-    display: flex; 
+.screen-deposito{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     height: 100%;
-    width: 90%;
-    margin-left: 10%;
+    width: 100%;
 }
 
-.container-deposito p{
-    font-size: 1.5em;
+.screen-deposito p{
+    font-size: 2.5em;
 }
 
-.container-metodos{
+.container-deposito-metodos{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    gap: 40px;
+    justify-content: center;
+    width: 80%;
     background-color: #343434;
+    margin: 0;
+    padding: 2%;
 }
 
 .metodo{
-    width: 15vw;
-    height: 15vw;
-    margin: 1vw 1vw 1vw 1vw;
-}
-
-.metodo img{
-    width: 100%;
-    height: 100%;
+    margin: 0;
+    margin-bottom: 0;
 }
 
 .metodo p{
-    width: 20%;
+    font-size: 1em;
     text-align: center;
+}
+
+.metodo img{
+    width: 200px;
+    height: 200px;
+}
+
+/*pantalla transacciones*/
+.transacciones-screen{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+}
+
+.transacciones-screen h1{
+    text-align: center;
+    margin: 8vh;
+}
+
+
+.transacciones-screen table{
+    width: 100%;
+    font-size: 1.25em;
+    text-align: center;
+    border-collapse: collapse;
+    box-shadow: 4px 4px 20px rgba(0,0,0,0.5);
+
+
+}
+
+.transacciones-screen th, 
+.transacciones-screen td
+{
+    border: 3px solid white;
+    font-size: 1.25em;
+    text-align: center;
+    padding: 20px;
+}
+
+.transacciones-screen th{
+    background-color: #034d2f;
+}
+
+/*pantalla personales*/
+.personales-screen{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.personales-screen form{
+    width:60%;
+    display: flex;
+    flex-direction: column;
+    background-color: #343434;
+    padding: 5%;
+    border-radius: 8px;
+}
+
+.personales-screen label{
+    margin-bottom: 5px;
+}
+
+.personales-screen input{
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9em;
+    width: 100%;
+    height: 3vh;
+    margin-bottom: 2vh;
+    border: none;
+    border-radius: 8px;
+}
+
+
+.personales-screen input:focus{
+    outline: none;
+}
+
+.personales-screen input:disabled{
+    color: rgba(255, 255, 255, 0.734);
+}
+
+
+.personales-screen button{
+    margin: auto;
+    background-color: #212121;
+    margin-top: 5%;
+    border-radius: 8px;
+    width: 20%;
+}
+
+
+/*pantalla seguridad*/
+.seguridad-screen{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.seguridad-screen form{
+    width:60%;
+    margin:2%;
+    display: flex;
+    flex-direction: column;
+    background-color: #343434;
+    padding: 5%;
+    border-radius: 8px;
+}
+
+.seguridad-screen h2{
+    margin: auto;
+}
+
+.seguridad-screen label{
+    margin-bottom: 5px;
+}
+
+.seguridad-screen input{
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9em;
+    width: 100%;
+    height: 3vh;
+    margin-bottom: 2vh;
+    border: none;
+    border-radius: 8px;
+}
+
+
+.seguridad-screen input:focus{
+    outline: none;
+}
+
+.seguridad-screen input:disabled{
+    color: rgba(255, 255, 255, 0.734);
+}
+
+
+.seguridad-screen button{
+    margin-left:80%;
+    background-color: #212121;
+    margin-top: 5%;
+    border-radius: 8px;
+    width: 25%;
+}
+
+/*pantalla invitacion*/
+.invitacion-screen{
+    font-size: 1em;
+    width: 100%;
+    padding: 5%;
+}
+
+.invitacion-screen div{
+    border-radius: 8px;
+    background-color: #343434;
+    padding: 3%;
+}
+
+/*pantalla atencion*/
+.atencion-screen{
+    display: flex;
+    justify-content: space-between;
+    height: 80%;
+    padding-right: 15%;
+    padding-left: 15%;
+    padding-bottom: 5%;
+    padding-top: 5%;
+}
+
+.atencion-screen div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #343434;
+    height: 100%;
+    width: 40%;
+    border-radius: 8px;
+    padding: 3%;
+}
+
+
+.atencion-screen div p, .atencion-screen div h3{
+    text-align: center;
+    margin: auto;
+}
+
+.atencion-screen button{
+    margin: auto;
+    margin-bottom: 15%;
+    background-color: #212121;
+    margin-top: 5%;
+    border-radius: 8px;
+    width: 100%;
 }

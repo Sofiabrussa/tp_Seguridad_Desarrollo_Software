@@ -10,28 +10,27 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Trocchi&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <img src="/static/resources/images/logopng.png" alt="BitStake" class="logo">
-        <h1 class="title-header">  MI CUENTA </h1>
+    <header class="header-container">
+        <img src="/static/resources/images/logopng.png" alt="BitStake" class="header-logo">
+        <h1 class="header-title">  MI CUENTA </h1>
     </header>
-    <span>
-        <sidebar class="container">
-            <p>MIS CARTERAS Y MIS APUESTAS</p>
+    <div class="container-principal">
+        <aside class="container-sidebar">
+            <p>MI CARTERA</p>
             <button class="button button-deposito active">Hacer un deposito</button>
-            <button class="button button-mail">Retirada de fondos</button>
-            <button class="button button-contraseña">Transacciones</button>
+            <button class="button button-retirar">Retirar fondos</button>
+            <button class="button button-transacciones">Transacciones</button>
             <p>PERFIL</p>
-            <button class="button">Datos personales</button>
-            <button class="button" >Seguridad</button>
+            <button class="button button-personales">Datos personales</button>
+            <button class="button button-seguridad" >Seguridad</button>
             <p>ADICIONAL</p>
-            <button class="button">Invite a sus amigos</button>
-            <button class="button">Atencion al cliente</button>
+            <button class="button button-invitacion">Invite a sus amigos</button>
+            <button class="button button-atencion">Atencion al cliente</button>
     
             <button class="button">cerrar sesion</button>
-        </sidebar>
-        <div class="screen"></div>
-
-    </span>
+        </aside>
+        <div class="container-screen"></div>
+    </div>
 
 </body>
 <script>
@@ -39,65 +38,195 @@
     document.addEventListener("DOMContentLoaded", ()=>{
 
         //pantallas
-        const screen = document.querySelector(".screen")
+        const screen = document.querySelector(".container-screen")
 
         //pantalla hacer deposito (por defecto)
         const divDeposito = document.createElement("div")
-        divDeposito.classList.add("deposito-screen")
+        divDeposito.classList.add("screen-deposito")
         divDeposito.innerHTML = `
-            <div class="container-deposito">
-                <p>Seleccione el metodo de pago para recargar su cuenta:</p>
-                <p>METODOS</p>    
-                <div class="container-metodos">
-                    <div class="metodo">
-                        <img src="/static/resources/images/mercadoPago.jpg"/>    
-                        <p class="footer">Mercado Pago</p>
-                    </div>
-                    <div class="metodo">
-                        <img src="/static/resources/images/transferenciaBancaria.jpg"/>    
-                        <p class="footer">Transferencia Bancaria</p>
-                    </div>
-                    <div class="metodo">
-                        <img src="/static/resources/images/astroPay.jpg"/>    
-                        <p class="footer">Astro Pay</p>
-                    </div>
-                    <div class="metodo">
-                        <img src="/static/resources/images/bitcoin.jpg"/>    
-                        <p class="footer">Bitcoin</p>
-                    </div>
-                    <div class="metodo">
-                        <img src="/static/resources/images/monero.png"/>    
-                        <p class="footer">Monero</p>
-                    </div>
-                    <div class="metodo">
-                        <img src="/static/resources/images/ethereum.jpg"/>    
-                        <p class="footer">Ethereum</p>
-                    </div>
-                    
-                </div>    
-            </div>
+            <p>Seleccione el metodo de pago para recargar su cuenta:</p>  
+            <div class="container-deposito-metodos">
+                <div class="metodo">
+                    <a href=""><img src="/static/resources/images/mercadoPago.jpg"/></a>     
+                    <p class="footer">Mercado Pago</p>
+                </div>
+                <div class="metodo">
+                    <a href=""><img src="/static/resources/images/transferenciaBancaria.jpg"/></a>     
+                    <p class="footer">Transferencia Bancaria</p>
+                </div>
+                <div class="metodo">
+                    <a href=""><img src="/static/resources/images/astroPay.jpg"/></a>     
+                    <p class="footer">Astro Pay</p>
+                </div>
+                <div class="metodo">
+                    <a href=""><img src="/static/resources/images/bitcoin.jpg"/></a>     
+                    <p class="footer">Bitcoin</p>
+                </div>
+                <div class="metodo">
+                    <a href=""><img src="/static/resources/images/monero.png"/></a>    
+                    <p class="footer">Monero</p>
+                </div>
+                <div class="metodo">
+                    <a href=""><img src="/static/resources/images/ethereum.jpg"/></a>     
+                    <p class="footer">Ethereum</p>
+                </div>
+                
+            </div>    
+
         `
         screen.appendChild(divDeposito)
-    
-        screen.appendChild(div)
-        //pantalla confirmar mail
-        const divMail = document.createElement("div")
-        divMail.classList.add("mail-screen")
-        divMail.innerHTML =`
-            <h3>Ingrese el mail para confirmar</h3>
-            <form action="">
-                <label for="mail">Mail</label>
-                <input name="mail" type="mail">
-                <button type="submit">Confirmar</button>
+
+        //pantalla retirar fondos
+        const divRetirar = document.createElement("div")
+        divRetirar.classList.add("screen-deposito") //la misma clase porque es igual la pantalla
+        divRetirar.innerHTML = `
+            <p>Seleccione un metodo de retiro:</p>  
+            <div class="container-deposito-metodos">
+                <div class="metodo">
+                    <a href=""><img src="/static/resources/images/mercadoPago.jpg"/></a>     
+                    <p class="footer">Mercado Pago</p>
+                </div>
+                <div class="metodo">
+                    <a href=""><img src="/static/resources/images/transferenciaBancaria.jpg"/></a>     
+                    <p class="footer">Transferencia Bancaria</p>
+                </div>
+                <div class="metodo">
+                    <a href=""><img src="/static/resources/images/astroPay.jpg"/></a>     
+                    <p class="footer">Astro Pay</p>
+                </div>
+                <div class="metodo">
+                    <a href=""><img src="/static/resources/images/lemon_cash.png"/></a>     
+                    <p class="footer">Lemon cash</p>
+                </div>
+                <div class="metodo">
+                    <a href=""><img src="/static/resources/images/netteler.jpg"/></a>    
+                    <p class="footer">Monero</p>
+                </div>
+                <div class="metodo">
+                    <a href=""><img src="/static/resources/images/bybit.png"/></a>     
+                    <p class="footer">Bybit</p>
+                </div>
+                
+            </div>    
+
+        `
+
+        //pantalla transacciones
+        divTransacciones = document.createElement("div")
+        divTransacciones.classList.add("transacciones-screen")
+        divTransacciones.innerHTML = `
+            <div>
+                <h1>Historial de transacciones</h1>
+                <table>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Tipo</th>
+                        <th>Monto</th>
+                        <th>Metodo</th>
+                    </tr>
+                    <tr>
+                        <td>17/11/2025  15:45</td>
+                        <td>Ganancia</td>
+                        <td>+ARS 2.400</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>17/11/2025  15:10</td>
+                        <td>Apuesta</td>
+                        <td>-ARS 1.000</td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td>17/11/2025  14:32</td>
+                        <td>Depósito</td>
+                        <td>+ARS 5.000</td>
+                        <td>Transferencia bancaria</td>
+                    </tr>
+                </table>    
+            </div>
+        `
+        
+        //pantalla datos personales
+        let divPersonales = document.createElement("div")
+        divPersonales.classList.add("personales-screen")
+        divPersonales.innerHTML = `
+            <h1>Datos personales</h1>
+            <form>
+                <h2>Cuenta</h2>
+                <label>Numero de cuenta</label>
+                <input value="29357231" disabled=true />
+                <label>Fecha de registro</label>
+                <input value="17/11/2025" disabled=true/>
+                <label>Nombre de usuario</label>
+                <input type=text  placeholder="Ingrese un nombre"/>
+                <label>Numero de telefono</label>
+                <input type=mail placeholder="Ingrese su numero de telefono"/>
+                <button class="button">Guardar</button>
             </form>
         `
-        //pantalla contraseña
-        const divContra = document.createElement("div")
-        divContra.classList.add("constraseña-screen")
-        divContra.innerHTML =`
-            <p id="texto-contraseña">Se enviara un link a su correo para realizar el cambio de contraseña</p>
-            <button id="button-contraseña" class="button-cambiar">Cambiar contraseña</button>
+
+        //pantalla seguridad
+        const divSeguridad = document.createElement("div")
+        divSeguridad.classList.add("seguridad-screen")
+        divSeguridad.innerHTML =`
+            <h1>Seguridad</h1>
+            <form>
+                <h2>Asociar Email</h2>
+                <label>email</label>
+                <input type=mail placeholder="Ingrese su email" />
+                <button class="button">Confirmar</button>
+            </form>
+
+            <form>
+                <h2>Cambiar contraseña</h2>
+                <label>Contraseña actual</label>
+                <input value=password />
+                <label>Nueva contraseña</label>
+                <input value=password />
+                <button class="button">Confirmar</button>
+            </form>
         `
+        //pantalla invitacion
+        const divinvitacion = document.createElement("div")
+        divinvitacion.classList.add("invitacion-screen")
+        divinvitacion.innerHTML =`
+            <h2>¡Afíliese y empiece a ganar!</h2>
+            <p>Construya una red de varios niveles al invitar a sus amigos que, a su vez, remiten a sus amigos</p>
+            <div>
+                <h3>¿Como funciona?</h3>
+                <ul>
+                    <li>Usted invita a sus amigos.</li>    
+                    <li>Sus amigos se registran, depositan fondos y hacen apuestas.</li>    
+                    <li>¡Usted recibe su recompensa!</li>    
+                </ul>
+                <p>Al remitir a sus amigos, construirá una red de múltiples niveles. En cada nivel ganará un porcentaje del beneficio neto de 1xBet:</p>
+                <div>
+                    <input type="checkbox"/>
+                    <a href="#">Acepto los Términos y Condiciones.</a>
+                </div>
+            </div>
+        `
+
+        //pantalla atencion al cliente
+        const divAtencion = document.createElement("div")
+        divAtencion.classList.add("atencion-screen")
+        divAtencion.innerHTML =`
+            <div>
+               
+                <h3>Consultas sobre pagos</h3>
+                <p>Haga una consulta o acceda al historial de consultas</p>
+                <button class="button">Consulta sobre pagos</button>
+            </div>
+            <div>
+               
+                <h3>Consulta online</h3>
+                <p>Haga sus consultas directamente en el chat</p>
+                <button class="button">Escriba un mensaje</button>
+            </div>
+
+        `
+
+    
 
         
 
@@ -111,18 +240,20 @@
 
                 //agregamos pantalla
                 screen.innerHTML = "";
-                if (b.classList.contains("button-inicio")) {
-                    screen.appendChild(div);
-                    } else if (b.classList.contains("button-mail")) {
-                    screen.appendChild(divMail);
-                    } else if (b.classList.contains("button-contraseña")) {
-                    screen.appendChild(divContra);
-                    //actualizar el texto de contraseña
-                    const btn = document.getElementById("button-contraseña")
-                    const p = document.getElementById("texto-contraseña")
-                    btn.addEventListener('click', ()=>{
-                        p.textContent = "Correo enviado"
-                    })
+                if (b.classList.contains("button-deposito")) {
+                    screen.appendChild(divDeposito);
+                    } else if (b.classList.contains("button-retirar")) {
+                    screen.appendChild(divRetirar);
+                    } else if (b.classList.contains("button-transacciones")) {
+                    screen.appendChild(divTransacciones);
+                    } else if (b.classList.contains("button-personales")) {
+                    screen.appendChild(divPersonales);
+                    }else if (b.classList.contains("button-seguridad")) {
+                    screen.appendChild(divSeguridad);
+                    }else if (b.classList.contains("button-invitacion")) {
+                    screen.appendChild(divinvitacion);
+                    }else if (b.classList.contains("button-atencion")) {
+                    screen.appendChild(divAtencion);
                     }
             })
         })

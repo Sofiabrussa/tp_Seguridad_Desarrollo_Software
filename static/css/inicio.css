@@ -148,6 +148,7 @@ a{
   background-color: rgba(0,0,0,0.75);
   box-shadow: 4px 4px 4px rgba(0,0,0,0.75);
   transition: ease 0.05s;
+  border-radius: 8px;
 }
 
 .logos:hover{
