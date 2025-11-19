@@ -6,9 +6,9 @@ import secrets
 
 DB = "users.db"
 app = Flask(__name__)
-app.secret_key = "dev-secret-key"  # Solo para laboratorio
+app.secret_key = "dev-secret-key" 
 
-# --- DB helpers ---
+# --- BASE DE DATOS ---
 def get_db():
     db = getattr(g, "_db", None)
     if db is None:
@@ -44,7 +44,7 @@ def init_db():
     db.commit()
     db.close()
 
-# --- CSRF token helpers ---
+# --- Generar token CSRF ---
 def get_csrf_token():
     if "csrf_token" not in session:
         session["csrf_token"] = secrets.token_urlsafe(32)
@@ -84,7 +84,6 @@ def inicio():
     if "user_id" not in session:
         return redirect("/login")
     db = get_db()
-    # La consulta no se usa, pero la dejamos por simetría con la vulnerable
     db.execute("SELECT * FROM users WHERE id=?", (session["user_id"],)).fetchone()
     return send_from_directory("static/vulnerable", "inicio.html")
 
@@ -101,6 +100,7 @@ def cuenta():
 
     token = get_csrf_token()
 
+    #Flask envía toda la información al front, incluyendo el token CSRF 
     return render_template(
         "cuenta.html",
         email=r["email"],
@@ -113,8 +113,8 @@ def change_email():
     if "user_id" not in session:
         return "No autenticado", 401
 
-    sent = request.form.get("csrf_token", "")
-    expected = session.get("csrf_token")
+    sent = request.form.get("csrf_token", "") #Obtener el token que mandó el formulario
+    expected = session.get("csrf_token") #Obtener el token verdadero de la sesión
 
     if not sent or sent != expected:
         app.logger.warning(
@@ -133,7 +133,6 @@ def change_email():
         f"[PATCHED] change-email called for user {session['user_id']} -> {new}"
     )
 
-    # Opcional: rotar el token después de usarlo
     rotate_csrf_token()
 
     return f"Email cambiado a {new}"
@@ -142,11 +141,11 @@ def change_email():
 def logout():
     session.clear()
     resp = redirect("/login")
-    # Limpia cookie de sesión (para mostrar buena práctica)
+    # Limpia cookie de sesión 
     resp.set_cookie("session", "", expires=0)
     return resp
 
-# ---- Página maliciosa (mismo origen) ----
+# ---- maliciosa ----
 @app.route("/evil", methods=["GET"])
 def evil_page():
     return send_from_directory('static', 'evil.html')

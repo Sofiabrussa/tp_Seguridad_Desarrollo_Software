@@ -26,8 +26,7 @@
             <p>ADICIONAL</p>
             <button class="button button-invitacion">Invite a sus amigos</button>
             <button class="button button-atencion">Atencion al cliente</button>
-    
-            <button class="button">cerrar sesion</button>
+            <a href="/logout" class="button">Cerrar sesión</a>
         </aside>
         <div class="container-screen"></div>
     </div>
@@ -173,7 +172,6 @@
             </form>
         `;
 
-
         //pantalla invitacion
         const divinvitacion = document.createElement("div")
         divinvitacion.classList.add("invitacion-screen")
@@ -213,11 +211,6 @@
             </div>
 
         `
-
-    
-
-        
-
     
         //marcar boton activo
         let buttons = document.querySelectorAll(".button");
